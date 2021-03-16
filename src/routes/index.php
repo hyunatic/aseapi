@@ -41,9 +41,10 @@ $app->post('/api/colorgame/add', function(Request $request, Response $response){
     $score = $request->getParam('score');
     $picture = $request->getParam('picture');
     $mode = $request->getParam('mode');
+    $userid = $request->getParam('userid');
 
-    $sql = "INSERT INTO colourgame (age,time,score,picture,mode) VALUES
-    (:age,:time,:score,:picture,:mode)";
+    $sql = "INSERT INTO colourgame (age,time,score,picture,mode,userid) VALUES
+    (:age,:time,:score,:picture,:mode,:userid)";
 
     try{
         // Get DB Object
@@ -58,7 +59,7 @@ $app->post('/api/colorgame/add', function(Request $request, Response $response){
         $stmt->bindParam(':score',   $score);
         $stmt->bindParam(':picture',  $picture);
         $stmt->bindParam(':mode',    $mode);
-
+        $stmt->bindParam(':userid',    $userid);
 
         $stmt->execute();
 
@@ -94,9 +95,10 @@ $app->post('/api/simonsays/add', function(Request $request, Response $response){
     $score = $request->getParam('score');
     $picture = $request->getParam('picture');
     $mode = $request->getParam('mode');
+    $userid = $request->getParam('userid');
 
-    $sql = "INSERT INTO simonsays (age,time,score,picture,mode) VALUES
-    (:age,:time,:score,:picture,:mode)";
+    $sql = "INSERT INTO simonsays (age,time,score,picture,mode,userid) VALUES
+    (:age,:time,:score,:picture,:mode,:userid)";
 
     try{
         // Get DB Object
@@ -111,6 +113,7 @@ $app->post('/api/simonsays/add', function(Request $request, Response $response){
         $stmt->bindParam(':score',   $score);
         $stmt->bindParam(':picture',  $picture);
         $stmt->bindParam(':mode',    $mode);
+        $stmt->bindParam(':userid',    $userid);
 
 
         $stmt->execute();
@@ -147,9 +150,11 @@ $app->post('/api/numbergame/add', function(Request $request, Response $response)
     $score = $request->getParam('score');
     $picture = $request->getParam('picture');
     $mode = $request->getParam('mode');
+    $userid = $request->getParam('userid');
+    
 
-    $sql = "INSERT INTO numbergame (age,time,score,picture,mode) VALUES
-    (:age,:time,:score,:picture,:mode)";
+    $sql = "INSERT INTO numbergame (age,time,score,picture,mode,userid) VALUES
+    (:age,:time,:score,:picture,:mode, :userid)";
 
     try{
         // Get DB Object
@@ -164,6 +169,7 @@ $app->post('/api/numbergame/add', function(Request $request, Response $response)
         $stmt->bindParam(':score',   $score);
         $stmt->bindParam(':picture',  $picture);
         $stmt->bindParam(':mode',    $mode);
+        $stmt->bindParam(':userid',    $userid);
 
 
         $stmt->execute();
@@ -173,6 +179,22 @@ $app->post('/api/numbergame/add', function(Request $request, Response $response)
     } catch(PDOException $e){
         echo '{"error": {"text": '.$e->getMessage().'}';
     }
+});
+
+$app->post('/api/login', function(Request $request, Response $response){
+    $username = $request->getParam('username');
+    $password = $request->getParam('password');
+
+    $tsql = "SELECT username From userlogin WHERE username = '$username' AND password = '$password'";
+
+    $db = new db();
+    // Connect
+    $db = $db->connect();
+    $stmt = $db->prepare($tsql);
+    $stmt->execute();
+    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    echo json_encode($results);
+    
 });
 
 
