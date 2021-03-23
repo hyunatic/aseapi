@@ -1,3 +1,5 @@
+Example Link: https://aseapi.hyunatic.com/public/index.php/api/simonsays
+
 // Get all Colour Recall Records //
 /api/colorgame [GET]
 
