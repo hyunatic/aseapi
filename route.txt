@@ -1,0 +1,45 @@
+// Get all Colour Recall Records //
+/api/colorgame [GET]
+
+// Add new record to the Colour Recall Table //
+/api/colorgame/add [POST]
+{
+	"age": "string",
+	"time": "string",
+	"score": "string",
+	"picture": "string",
+	"mode": "string",
+	"userid": "string",
+	"gender": "string"
+}
+
+// Get all Quick Fingers Records //
+/api/simonsays [GET]
+
+// Add new record to the Quick Fingers Table //
+/api/simonsays/add [POST]
+{
+	"age": "string",
+	"time": "string",
+	"score": "string",
+	"picture": "string",
+	"mode": "string",
+	"userid": "string",
+	"gender": "string"
+}
+
+// Get all Mental Math Records //
+/api/numbergame [GET]
+
+// Add new record to the Mental Math Table //
+/api/numbergame/add [POST]
+{
+	"age": "string",
+	"time": "string",
+	"score": "string",
+	"picture": "string",
+	"mode": "string",
+	"userid": "string",
+	"gender": "string"
+}
+
