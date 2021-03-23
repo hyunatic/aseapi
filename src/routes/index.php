@@ -42,9 +42,11 @@ $app->post('/api/colorgame/add', function(Request $request, Response $response){
     $picture = $request->getParam('picture');
     $mode = $request->getParam('mode');
     $userid = $request->getParam('userid');
+    $gender = $request->getParam('gender');
 
-    $sql = "INSERT INTO colourgame (age,time,score,picture,mode,userid) VALUES
-    (:age,:time,:score,:picture,:mode,:userid)";
+
+    $sql = "INSERT INTO colourgame (age,time,score,picture,mode,userid,gender) VALUES
+    (:age,:time,:score,:picture,:mode,:userid,:gender)";
 
     try{
         // Get DB Object
@@ -60,6 +62,7 @@ $app->post('/api/colorgame/add', function(Request $request, Response $response){
         $stmt->bindParam(':picture',  $picture);
         $stmt->bindParam(':mode',    $mode);
         $stmt->bindParam(':userid',    $userid);
+        $stmt->bindParam(':gender',    $gender);
 
         $stmt->execute();
 
@@ -96,9 +99,10 @@ $app->post('/api/simonsays/add', function(Request $request, Response $response){
     $picture = $request->getParam('picture');
     $mode = $request->getParam('mode');
     $userid = $request->getParam('userid');
+    $gender = $request->getParam('gender');
 
-    $sql = "INSERT INTO simonsays (age,time,score,picture,mode,userid) VALUES
-    (:age,:time,:score,:picture,:mode,:userid)";
+    $sql = "INSERT INTO simonsays (age,time,score,picture,mode,userid,gender) VALUES
+    (:age,:time,:score,:picture,:mode,:userid,:gender)";
 
     try{
         // Get DB Object
@@ -114,6 +118,7 @@ $app->post('/api/simonsays/add', function(Request $request, Response $response){
         $stmt->bindParam(':picture',  $picture);
         $stmt->bindParam(':mode',    $mode);
         $stmt->bindParam(':userid',    $userid);
+        $stmt->bindParam(':gender',    $gender);
 
 
         $stmt->execute();
@@ -151,10 +156,10 @@ $app->post('/api/numbergame/add', function(Request $request, Response $response)
     $picture = $request->getParam('picture');
     $mode = $request->getParam('mode');
     $userid = $request->getParam('userid');
-    
+    $gender = $request->getParam('gender');
 
-    $sql = "INSERT INTO numbergame (age,time,score,picture,mode,userid) VALUES
-    (:age,:time,:score,:picture,:mode, :userid)";
+    $sql = "INSERT INTO numbergame (age,time,score,picture,mode,userid,gender) VALUES
+    (:age,:time,:score,:picture,:mode, :userid,:gender)";
 
     try{
         // Get DB Object
@@ -170,7 +175,7 @@ $app->post('/api/numbergame/add', function(Request $request, Response $response)
         $stmt->bindParam(':picture',  $picture);
         $stmt->bindParam(':mode',    $mode);
         $stmt->bindParam(':userid',    $userid);
-
+        $stmt->bindParam(':gender',    $gender);
 
         $stmt->execute();
 
