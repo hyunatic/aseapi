@@ -7,6 +7,8 @@ require '../src/config/db.php';
 
 $app = new \Slim\App;
 
+
+
 //Routes
 require '../src/routes/index.php';
 
