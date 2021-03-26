@@ -36,7 +36,7 @@ $app->get('/api/colorgame', function(Request $request, Response $response){
 $app->post('/api/colorgame/add', function(Request $request, Response $response){
     $age = $request->getParam('age');
     $score = $request->getParam('score');
-    $picture = $request->getParam('picture');
+    $picture = 'data:image/jpeg;base64,'. $request->getParam('picture');
     $mode = $request->getParam('mode');
     $userid = $request->getParam('userid');
     $gender = $request->getParam('gender');
